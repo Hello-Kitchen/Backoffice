@@ -1,7 +1,7 @@
-import { Add, Close, Delete, DeleteRounded, Replay, SendRounded } from '@mui/icons-material';
+import { Add, Close, DeleteRounded, Replay, SendRounded } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
-import { Alert, Autocomplete, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, MenuItem, Select, Stack, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, MenuItem, Select, Stack, TextField } from '@mui/material';
+import React, { useState } from 'react';
 import DishesForm from './DishesForm';
 
 export default function AddOrderDialog({ restaurant }) {

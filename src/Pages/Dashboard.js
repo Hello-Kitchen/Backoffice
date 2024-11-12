@@ -9,9 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Appbar from '../Components/AppBar';
 import { Button } from '@mui/material';
 import OrderView from './SideMenuViews/OrderView';
-import AddOrderDialog from '../Components/AddOrderDialog';
-import DishesForm from '../Components/DishesForm';
-
 export default function Dashboard() {
 
   const [restaurantData, setRestaurantData] = useState([]);
