@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# .env format
+```
+REACT_APP_BACKEND_URL=
+REACT_APP_BACKEND_PORT=
+REACT_APP_SALT_HASH=
+REACT_APP_BEARER_TOKEN= # Debug purpose - To be removed
+REACT_APP_RESTAURANT_ID= # Debug purpose - To be removed
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
