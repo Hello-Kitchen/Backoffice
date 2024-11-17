@@ -82,6 +82,7 @@ export default function Dashboard() {
   displayOption["Orders"] = (<OrderView restaurant={selectedRestaurant}/>);
   displayOption["Food categories"] = (<FoodCategoriesView restaurant={selectedRestaurant}/>);
   displayOption["Food"] = (<FoodView restaurant={selectedRestaurant}/>);
+  displayOption["Details"] = (<DetailsView restaurant={selectedRestaurant}/>);
   displayOption["Ingredients"] = (<IngredientsView restaurant={selectedRestaurant}/>);
   displayOption["Details"] = (<DetailsView restaurant={selectedRestaurant}/>);
   displayOption["WIP"] = (<Box><h1>WIP</h1></Box>);

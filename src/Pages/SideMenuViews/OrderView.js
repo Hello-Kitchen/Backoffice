@@ -109,7 +109,7 @@ export default function OrderView({ restaurant }) {
                   <Close/>
                 </IconButton>
               </Box>
-              {selectedOrder ? <OrderDetailsSide orderId={selectedOrder} restaurant={restaurant}/> : <p>No order selected</p>}
+              {selectedOrder && <OrderDetailsSide orderId={selectedOrder} restaurant={restaurant}/>}
             </Box>
           </Slide>
         </Box>
