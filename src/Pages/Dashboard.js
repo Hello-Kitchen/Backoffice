@@ -12,6 +12,7 @@ import OrderView from './SideMenuViews/OrderView';
 import FoodCategoriesView from './SideMenuViews/FoodCategoriesView';
 import FoodView from './SideMenuViews/FoodView';
 import DetailsView from './SideMenuViews/DetailsView';
+import IngredientsView from './SideMenuViews/IngredientsView';
 export default function Dashboard() {
 
   const [restaurantData, setRestaurantData] = useState([]);
@@ -81,6 +82,7 @@ export default function Dashboard() {
   displayOption["Orders"] = (<OrderView restaurant={selectedRestaurant}/>);
   displayOption["Food categories"] = (<FoodCategoriesView restaurant={selectedRestaurant}/>);
   displayOption["Food"] = (<FoodView restaurant={selectedRestaurant}/>);
+  displayOption["Ingredients"] = (<IngredientsView restaurant={selectedRestaurant}/>);
   displayOption["Details"] = (<DetailsView restaurant={selectedRestaurant}/>);
   displayOption["WIP"] = (<Box><h1>WIP</h1></Box>);
 

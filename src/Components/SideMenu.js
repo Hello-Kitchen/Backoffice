@@ -158,7 +158,7 @@ export default function MiniDrawer({ open, handleDrawerClose, setDisplay, restau
             <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[{ minHeight: 48, px: 2.5 }, open ? { justifyContent: 'initial' } : { justifyContent: 'center' } ]}
-                onClick={() => setDisplay("WIP")}
+                onClick={() => setDisplay("Ingredients")}
               >
                 <ListItemIcon sx={[{ minWidth: 0, justifyContent: 'center' }, open ? { mr: 3 } : { mr: 'auto' }]}>
                   <EggAltRounded />
