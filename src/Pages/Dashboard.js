@@ -10,6 +10,7 @@ import Appbar from '../Components/AppBar';
 import { Button } from '@mui/material';
 import OrderView from './SideMenuViews/OrderView';
 import FoodCategoriesView from './SideMenuViews/FoodCategoriesView';
+import DetailsView from './SideMenuViews/DetailsView';
 export default function Dashboard() {
 
   const [restaurantData, setRestaurantData] = useState([]);
@@ -78,6 +79,7 @@ export default function Dashboard() {
   );
   displayOption["Orders"] = (<OrderView restaurant={selectedRestaurant}/>);
   displayOption["Food categories"] = (<FoodCategoriesView restaurant={selectedRestaurant}/>);
+  displayOption["Details"] = (<DetailsView restaurant={selectedRestaurant}/>);
   displayOption["WIP"] = (<Box><h1>WIP</h1></Box>);
 
   return (
