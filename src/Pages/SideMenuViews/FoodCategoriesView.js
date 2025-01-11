@@ -17,7 +17,7 @@ export default function FoodCategoriesView({ restaurant }) {
   const fetchData = async () => {
     setLoading(true);
     fetch(
-      `http://localhost:4000/api/${restaurant.id}/food_category`, // Keeped in case with add the detail param in the back
+      `http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category`, // Keeped in case with add the detail param in the back
       {
         headers: {
           Authorization: process.env.REACT_APP_BEARER_TOKEN,
@@ -79,7 +79,7 @@ export default function FoodCategoriesView({ restaurant }) {
   };
 
   const handleDeleteClick = (id) => () => {
-    fetch(`http://localhost:4000/api/${restaurant.id}/food_category/${id}`, {
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category/${id}`, {
         method: 'DELETE',
         headers: {
             Authorization: process.env.REACT_APP_BEARER_TOKEN,
@@ -110,7 +110,7 @@ export default function FoodCategoriesView({ restaurant }) {
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: undefined };
     if (newRow.isNew) {
-    fetch(`http://localhost:4000/api/${restaurant.id}/food_category/`, {
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category/`, {
         method: 'POST',
         headers: {
             Authorization: process.env.REACT_APP_BEARER_TOKEN,
@@ -127,7 +127,7 @@ export default function FoodCategoriesView({ restaurant }) {
         console.error("Error:", error);
       });
     } else {
-        fetch(`http://localhost:4000/api/${restaurant.id}/food_category/${newRow.id}`, {
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category/${newRow.id}`, {
             method: 'PUT',
             headers: {
                 Authorization: process.env.REACT_APP_BEARER_TOKEN,

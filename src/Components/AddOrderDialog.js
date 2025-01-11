@@ -37,9 +37,10 @@ export default function AddOrderDialog({ restaurant }) {
             channel: channel,
             number: number,
             part: parseInt(part),
-            date: date
+            date: date,
+            served: false
         };
-        fetch(`http://localhost:4000/api/${restaurant.id}/orders/`, {
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/orders/`, {
             method: 'POST',
             headers: {
                 Authorization: process.env.REACT_APP_BEARER_TOKEN,

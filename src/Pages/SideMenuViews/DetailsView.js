@@ -21,7 +21,7 @@ export default function DetailsView({ restaurant }) {
 
   const fetchData = async () => {
     setOrdersLoading(true);
-    fetch(`http://localhost:4000/api/restaurants/${restaurant.id}`, // Keeped in case with add the detail param in the back
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/restaurants/${restaurant.id}`, // Keeped in case with add the detail param in the back
       {headers: {
         Authorization: process.env.REACT_APP_BEARER_TOKEN,
       }}
@@ -42,7 +42,7 @@ export default function DetailsView({ restaurant }) {
   }, []);
   
   const deleteOrder = (id) => {
-    fetch(`http://localhost:4000/api/${restaurant.id}/details/${id}`, {
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/details/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: process.env.REACT_APP_BEARER_TOKEN,

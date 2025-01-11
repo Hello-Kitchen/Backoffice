@@ -34,7 +34,7 @@ export default function AddFoodDialog({ restaurant }) {
             ingredients: ingredients.map(ingredient => parseInt(ingredient.split(" - ")[0], 10)),
             id_category: parseInt(category.split(" - ")[0], 10)
         };
-        fetch(`http://localhost:4000/api/${restaurant.id}/food/`, {
+        fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food/`, {
             method: 'POST',
             headers: {
                 Authorization: process.env.REACT_APP_BEARER_TOKEN,

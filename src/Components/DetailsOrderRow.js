@@ -14,7 +14,7 @@ export default function DetailsOrderRow({ order, food }) {
   const getDetailsOptions = (foodId) => {
     setLoading(true);
     const detailsOptions = [];
-    fetch(`http://localhost:4000/api/${process.env.REACT_APP_RESTAURANT_ID}/food/${foodId}`, 
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/food/${foodId}`, 
       { headers: { 
         Authorization: process.env.REACT_APP_BEARER_TOKEN 
       } }
@@ -23,7 +23,7 @@ export default function DetailsOrderRow({ order, food }) {
     .then(data => {
       return Promise.all(
         data.details.map(detail => 
-          fetch(`http://localhost:4000/api/${process.env.REACT_APP_RESTAURANT_ID}/details/${detail}`, 
+          fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/details/${detail}`, 
             { headers: { Authorization: process.env.REACT_APP_BEARER_TOKEN } }
           )
           .then(response => response.json())
@@ -53,7 +53,7 @@ export default function DetailsOrderRow({ order, food }) {
         return {...rest};
       })
     };
-    fetch(`http://localhost:4000/api/${process.env.REACT_APP_RESTAURANT_ID}/orders/${order.id}`, {
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/orders/${order.id}`, {
       method: 'PUT',
       headers: {
         Authorization: process.env.REACT_APP_BEARER_TOKEN,

@@ -21,7 +21,7 @@ export default function DetailsDetailsSide({ detailId, restaurant }) {
   const fetchData = (detailId) => {
     setLoading(true);
     fetch(
-      `http://localhost:4000/api/${restaurant.id}/details/${detailId}`,
+      `http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/details/${detailId}`,
       {
         headers: {
           Authorization: process.env.REACT_APP_BEARER_TOKEN,
@@ -82,7 +82,7 @@ export default function DetailsDetailsSide({ detailId, restaurant }) {
 
     console.log(foodToSend);
 
-    fetch(`http://localhost:4000/api/${restaurant.id}/details/${detailId}`, {
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/details/${detailId}`, {
       method: 'PUT',
       headers: {
         Authorization: process.env.REACT_APP_BEARER_TOKEN,
