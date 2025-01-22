@@ -35,9 +35,9 @@ export default function Dashboard() {
   }
 
   const fetchData = async () => {
-    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/restaurants/`, 
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/restaurants/`,
       {headers: {
-        Authorization: process.env.REACT_APP_BEARER_TOKEN
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }}
     )
     .then(response => response.json())

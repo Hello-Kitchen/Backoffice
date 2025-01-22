@@ -14,17 +14,17 @@ export default function DetailsOrderRow({ order, food }) {
   const getDetailsOptions = (foodId) => {
     setLoading(true);
     const detailsOptions = [];
-    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/food/${foodId}`, 
-      { headers: { 
-        Authorization: process.env.REACT_APP_BEARER_TOKEN 
+    fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/food/${foodId}`,
+      { headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       } }
     )
     .then(response => response.json())
     .then(data => {
       return Promise.all(
-        data.details.map(detail => 
-          fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/details/${detail}`, 
-            { headers: { Authorization: process.env.REACT_APP_BEARER_TOKEN } }
+        data.details.map(detail =>
+          fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/details/${detail}`,
+            { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
           )
           .then(response => response.json())
           .then(data => {
@@ -56,7 +56,7 @@ export default function DetailsOrderRow({ order, food }) {
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${process.env.REACT_APP_RESTAURANT_ID}/orders/${order.id}`, {
       method: 'PUT',
       headers: {
-        Authorization: process.env.REACT_APP_BEARER_TOKEN,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(updatedOrder)
@@ -113,6 +113,6 @@ export default function DetailsOrderRow({ order, food }) {
         </Alert>}
       </Snackbar>
     </div>
-    
+
   );
 }

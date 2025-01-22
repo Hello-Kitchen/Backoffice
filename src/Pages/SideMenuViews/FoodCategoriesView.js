@@ -20,7 +20,7 @@ export default function FoodCategoriesView({ restaurant }) {
       `http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category`, // Keeped in case with add the detail param in the back
       {
         headers: {
-          Authorization: process.env.REACT_APP_BEARER_TOKEN,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -42,16 +42,16 @@ export default function FoodCategoriesView({ restaurant }) {
   const EditToolbar = (props) => {
     const { setRows, setRowModesModel } = props;
     const id = 0;
-  
+
     const handleClick = () => {
-  
+
       setRows((oldRows) => [...oldRows, { id, name: "", isNew: true }]);
       setRowModesModel((oldModel) => ({
         ...oldModel,
         [id]: { mode: GridRowModes.Edit, fieldToFocus: "name" },
       }));
     };
-  
+
     return (
       <GridToolbarContainer>
         <Button color="primary" startIcon={<Add />} onClick={handleClick}>
@@ -60,7 +60,7 @@ export default function FoodCategoriesView({ restaurant }) {
       </GridToolbarContainer>
     );
   }
-  
+
 
   const [rowModesModel, setRowModesModel] = React.useState({});
 
@@ -82,7 +82,7 @@ export default function FoodCategoriesView({ restaurant }) {
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category/${id}`, {
         method: 'DELETE',
         headers: {
-            Authorization: process.env.REACT_APP_BEARER_TOKEN,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
     })
       .then((response) => {
@@ -113,7 +113,7 @@ export default function FoodCategoriesView({ restaurant }) {
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category/`, {
         method: 'POST',
         headers: {
-            Authorization: process.env.REACT_APP_BEARER_TOKEN,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(updatedRow)
@@ -130,7 +130,7 @@ export default function FoodCategoriesView({ restaurant }) {
         fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food_category/${newRow.id}`, {
             method: 'PUT',
             headers: {
-                Authorization: process.env.REACT_APP_BEARER_TOKEN,
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(updatedRow)

@@ -37,7 +37,7 @@ export default function AddFoodDialog({ restaurant }) {
         fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food/`, {
             method: 'POST',
             headers: {
-                Authorization: process.env.REACT_APP_BEARER_TOKEN,
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(food)
@@ -104,7 +104,7 @@ export default function AddFoodDialog({ restaurant }) {
                     {sendStatus === 'success' && <Alert severity="success" sx={{width: '100%'}}>Food sent successfully</Alert>}
                     {sendStatus === 'error' && <Alert severity="error">Error sending food</Alert>}
                     {sendStatus === 'success' ? (
-                        <Button 
+                        <Button
                             onClick={() => handleClose()}
                             startIcon={<Close/>}
                         >
@@ -112,7 +112,7 @@ export default function AddFoodDialog({ restaurant }) {
                         </Button>
                     ) : (
                         <div>
-                            <Button 
+                            <Button
                                 onClick={() => handleClose()}
                                 startIcon={<DeleteRounded/>}
                                 disabled={isSending}

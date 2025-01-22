@@ -22,7 +22,7 @@ export default function FoodView({ restaurant }) {
     setOrdersLoading(true);
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/restaurants/${restaurant.id}`, // Keeped in case with add the detail param in the back
       {headers: {
-        Authorization: process.env.REACT_APP_BEARER_TOKEN,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       }}
     )
     .then(response => response.json())
@@ -42,12 +42,12 @@ export default function FoodView({ restaurant }) {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   const deleteOrder = (id) => {
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food/${id}`, {
       method: 'DELETE',
       headers: {
-        Authorization: process.env.REACT_APP_BEARER_TOKEN,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       }
     })
     .then(response => {
@@ -82,7 +82,7 @@ export default function FoodView({ restaurant }) {
   ];
 
   return (
-    
+
     <Box sx={{ display: 'flex' }}>
       <Box
         component="main"

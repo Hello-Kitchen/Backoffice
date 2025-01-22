@@ -21,7 +21,7 @@ export default function OrderDetailsSide({ orderId, restaurant }) {
       `http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/orders/${orderId}`,
       {
         headers: {
-          Authorization: process.env.REACT_APP_BEARER_TOKEN,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -61,7 +61,7 @@ export default function OrderDetailsSide({ orderId, restaurant }) {
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/orders/${selectedOrder.id}`, {
       method: 'PUT',
       headers: {
-        Authorization: process.env.REACT_APP_BEARER_TOKEN,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(updatedOrder)
@@ -98,7 +98,7 @@ export default function OrderDetailsSide({ orderId, restaurant }) {
     updatedOrder.date = value;
     setSelectedOrder(updatedOrder);
   }
-  
+
   const handlePartChange = (value) => {
     const updatedOrder = {...selectedOrder};
     updatedOrder.part = parseInt(value);

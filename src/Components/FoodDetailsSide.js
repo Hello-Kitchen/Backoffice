@@ -22,7 +22,7 @@ export default function FoodDetailsSide({ foodId, restaurant }) {
       `http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food/${foodId}`,
       {
         headers: {
-          Authorization: process.env.REACT_APP_BEARER_TOKEN,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     )
@@ -85,7 +85,7 @@ export default function FoodDetailsSide({ foodId, restaurant }) {
     fetch(`http://${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/api/${restaurant.id}/food/${foodId}`, {
       method: 'PUT',
       headers: {
-        Authorization: process.env.REACT_APP_BEARER_TOKEN,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(foodToSend)
